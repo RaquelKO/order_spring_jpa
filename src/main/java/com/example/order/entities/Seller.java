@@ -16,7 +16,11 @@ public class Seller extends User {
 	private String department;
 
 	@OneToMany(mappedBy = "seller")
-	private List<Order> orders = new ArrayList<>();;
+	private List<Order> orders = new ArrayList<>();
+
+	public Seller() {
+
+	}
 
 	public Seller(String department) {
 		this.department = department;
