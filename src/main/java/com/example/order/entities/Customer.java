@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -17,7 +18,8 @@ public class Customer extends User {
 
 	private String email;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	// FetchType.EAGER => Carregamento imediato, FetchType.LAZY é o padrão
 	@JoinColumn(name = "CUSTOMER_USER_ID")
 	private List<Address> addresses = new ArrayList<>();
 

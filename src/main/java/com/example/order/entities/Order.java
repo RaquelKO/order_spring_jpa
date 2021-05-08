@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,7 @@ public class Order implements Serializable {
 	@JoinColumn(name = "ADDRESS_ID")
 	private Address deliveredAdress;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "ORDER_ID")
 	private List<Item> itens = new ArrayList<>();
 
@@ -135,7 +136,7 @@ public class Order implements Serializable {
 	}
 
 	// Se alguns dos códigos abaixo forem implementados, teremos
-	// uma agregacao e nao uma composiçao
+	// uma agregação e não uma composição
 
 	// public void addItem(Item item) {
 	// itens.add(item);

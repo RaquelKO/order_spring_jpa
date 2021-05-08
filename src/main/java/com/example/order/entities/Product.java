@@ -22,7 +22,16 @@ public class Product {
 
 	private Double price;
 
+	private ProductType type;
+
 	@ManyToMany
+	/*
+	 * Se não usasse o mappedBy, poderia usar o @JoinTable:
+	 * 
+	 * @JoinTable( name="TB_SUPPLIER_PRODUCTS", joinColumns
+	 * = @JoinColumn(name="PRODUCT_ID"), inverseJoinColumns
+	 * = @JoinColumn(name="SUPPLIER_ID") )
+	 */
 	private List<Supplier> suppliers = new ArrayList<>();
 
 	public Product() {
@@ -64,6 +73,14 @@ public class Product {
 
 	public void addSupplier(Supplier supplier) {
 		this.suppliers.add(supplier);
+	}
+
+	public ProductType getType() {
+		return type;
+	}
+
+	public void setType(ProductType type) {
+		this.type = type;
 	}
 
 	@Override
